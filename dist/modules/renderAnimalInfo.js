@@ -8,11 +8,11 @@ export default function renderAnimalInfo(animal) {
     const animalName = document.createElement("h1");
     animalName.textContent = `${animal.name} the ${animal.kindOfAnimal}`;
     const jobPresentation = document.createElement("h2");
-    const employmentStatus = getEmploymentStatus(animal); // H! skriv funktion som returnerar "" eller not
-    jobPresentation.textContent = `${animal.job} - Currently ${employmentStatus} employed`;
+    const employmentStatus = getEmploymentStatus(animal); // H! skriv funktion som returnerar employed eller not
+    jobPresentation.textContent = `${animal.job} - Currently ${employmentStatus}`;
     const agePresentation = document.createElement("p");
     const animalAge = getAnimalAge(animal); //H! skriv funktion som räknar ut djurets ålder, returnera siffra som sträng
-    agePresentation.textContent = `Age: ${animalAge} years old.`;
+    agePresentation.textContent = `Age: ${animalAge.toString()} years old.`;
     animalInfoDiv.append(img, animalName, jobPresentation, agePresentation);
     if (animal.skills !== undefined) {
         const skills = getListOfSkills(animal); //H! Skriv funktion som kollar om det finns skills, om det är en array eller inte osv. returnera en ul med skillsen i 
@@ -43,6 +43,9 @@ export default function renderAnimalInfo(animal) {
     //=====================================================//
 }
 function getAnimalAge(animal) {
+    const currentYear = new Date().getFullYear();
+    const age = currentYear - Number(animal.birthYear);
+    return age;
 }
 function getEmploymentStatus(animal) {
 }
