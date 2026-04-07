@@ -4,7 +4,7 @@ export interface IAnimal {
     job: string,
     skills?: string | string[],
     birthYear: string,
-    imgUrl: string,
+    imageUrl: string,
     employmentStartDate: string,
     employmentEndDate?: string
 }
