@@ -1,6 +1,24 @@
 //Titta i index.html och hitta den div där info om varje djur ska skrivas ut.
 //Typa upp funktionens parameter
 export default function renderAnimalInfo(animal) {
+    const animalInfoDiv = document.querySelector(".animal-info");
+    animalInfoDiv.innerHTML = "";
+    const img = document.createElement("img");
+    img.src = `/images/${animal.imageUrl}`;
+    const animalName = document.createElement("h1");
+    animalName.textContent = `${animal.name} the ${animal.kindOfAnimal}`;
+    const jobPresentation = document.createElement("h2");
+    const employmentStatus = getEmploymentStatus(animal); // H! skriv funktion som returnerar "" eller not
+    jobPresentation.textContent = `${animal.job} - Currently ${employmentStatus} employed`;
+    const agePresentation = document.createElement("p");
+    const animalAge = getAnimalAge(animal); //H! skriv funktion som räknar ut djurets ålder, returnera siffra som sträng
+    agePresentation.textContent = `Age: ${animalAge} years old.`;
+    animalInfoDiv.append(img, animalName, jobPresentation, agePresentation);
+    if (animal.skills !== undefined) {
+        const skills = getListOfSkills(animal); //H! Skriv funktion som kollar om det finns skills, om det är en array eller inte osv. returnera en ul med skillsen i 
+        skills.classList.add("skills-list");
+        animalInfoDiv.appendChild(skills);
+    }
     //=====================================================//
     //Rendera ut bilden på djuret
     //Skriv ut djurets namn och typ av djur. Följ det här formatet: "Gina the Giraffe"
@@ -23,4 +41,25 @@ export default function renderAnimalInfo(animal) {
     //                  Eating
     //Bonus om du skriver ut rubriken "Skills" med CSS.
     //=====================================================//
+}
+function getAnimalAge(animal) {
+}
+function getEmploymentStatus(animal) {
+}
+function getListOfSkills(animal) {
+    const skillsList = document.createElement("ul");
+    if (Array.isArray(animal.skills)) {
+        const skills = animal.skills;
+        for (const skill of skills) {
+            const skillListItem = document.createElement("li");
+            skillListItem.textContent = skill;
+            skillsList.appendChild(skillListItem);
+        }
+    }
+    else if (typeof animal.skills === "string") {
+        const skillListItem = document.createElement("li");
+        skillListItem.textContent = animal.skills;
+        skillsList.appendChild(skillListItem);
+    }
+    return skillsList;
 }
