@@ -4,9 +4,9 @@
 //Typa upp funktionens parameter
 
 import { IAnimal } from "./IAnimal.ts";
-import renderAnimalInfo from "./renderAnimalInfo";
+import renderAnimalInfo from "./renderAnimalInfo.ts";
 
-export default function renderListOfAnimals(animals: IAnimal[]) {
+export default function renderListOfAnimals(animals: IAnimal[]) :void {
     const listOfAnimals = document.querySelector(".list-of-animals ul") as HTMLUListElement;
     
     for (const animal of animals){
