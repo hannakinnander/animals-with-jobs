@@ -4,6 +4,7 @@ export default function renderAnimalInfo(animal) {
     const animalInfoDiv = document.querySelector(".animal-info");
     animalInfoDiv.innerHTML = "";
     const imgDiv = document.createElement("div");
+    imgDiv.classList.add("img-div");
     const img = document.createElement("img");
     img.src = `/images/${animal.imageUrl}`;
     imgDiv.appendChild(img);
