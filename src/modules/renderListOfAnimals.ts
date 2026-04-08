@@ -9,7 +9,7 @@ import renderAnimalInfo from "./renderAnimalInfo.ts";
 export default function renderListOfAnimals(animals: IAnimal[]) :void {
     const listOfAnimals = document.querySelector(".list-of-animals ul") as HTMLUListElement;
     
-    for (const animal of animals){
+    for (const animal of animals) {
         const listItem = document.createElement("li");
         listItem.textContent = animal.name;
         listOfAnimals.appendChild(listItem);

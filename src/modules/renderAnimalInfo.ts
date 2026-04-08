@@ -13,23 +13,28 @@ export default function renderAnimalInfo(animal: IAnimal) {
   img.src = `/images/${animal.imageUrl}`;
   imgDiv.appendChild(img);
 
+  const textDiv = document.createElement("div");
+  textDiv.classList.add("text-div");
   const animalName = document.createElement("h1");
   animalName.textContent = `${animal.name} the ${animal.kindOfAnimal}`;
 
-  const jobPresentation = document.createElement("h2");
+  const jobPresentation = document.createElement("p");
+  jobPresentation.classList.add("job-presentation");
   const employmentStatus = getEmploymentStatus(animal); 
   jobPresentation.textContent = `${animal.job} - Currently ${employmentStatus}`;
 
   const agePresentation = document.createElement("p");
+  agePresentation.classList.add("age-presentation");
   const animalAge: number = getAnimalAge(animal); 
-  agePresentation.textContent = `Age: ${animalAge.toString()} years old.`;
+  agePresentation.textContent = `${animalAge.toString()} years old.`;
 
-  animalInfoDiv.append(imgDiv, animalName, jobPresentation, agePresentation);
+  textDiv.append(animalName, jobPresentation, agePresentation);
+  animalInfoDiv.append(imgDiv, textDiv);
 
   if (animal.skills !== undefined) {
     const skills: HTMLUListElement = getListOfSkills(animal); 
     skills.classList.add("skills-list");
-    animalInfoDiv.appendChild(skills);
+    textDiv.appendChild(skills);
   }
   
   
