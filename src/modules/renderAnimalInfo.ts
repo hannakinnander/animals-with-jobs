@@ -34,7 +34,7 @@ export default function renderAnimalInfo(animal: IAnimal) {
   const imgDiv = document.createElement("div");
   imgDiv.classList.add("img-div");
   const img = document.createElement("img");
-  img.src = `../images/${animal.imageUrl}`;
+  img.src = `images/${animal.imageUrl}`;
   img.alt = `Picture of ${animal.name} the ${animal.kindOfAnimal}`;
   imgDiv.appendChild(img);
 
