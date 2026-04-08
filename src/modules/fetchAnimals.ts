@@ -8,7 +8,7 @@ import { IAnimal } from "./IAnimal.ts";
 //med objekt enligt IAnimal-struktur, eller null om något går fel.
 export default async function fetchAnimals(): Promise<IAnimal[] | null> {
     try {
-        const response = await fetch("../../data/data.json");
+        const response = await fetch("../data/data.json");
         if (!response.ok) {
             throw new Error("Couldn't get animals");
         }

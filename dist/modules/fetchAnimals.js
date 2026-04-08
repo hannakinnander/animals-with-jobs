@@ -5,7 +5,7 @@
 //med objekt enligt IAnimal-struktur, eller null om något går fel.
 export default async function fetchAnimals() {
     try {
-        const response = await fetch("../../data/data.json");
+        const response = await fetch("../data/data.json");
         if (!response.ok) {
             throw new Error("Couldn't get animals");
         }
