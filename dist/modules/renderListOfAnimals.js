@@ -3,12 +3,16 @@
 //Varje list-item ska ha en event-lyssnare som kallar på "renderAnimalInfo"
 //Typa upp funktionens parameter
 import renderAnimalInfo from "./renderAnimalInfo.js";
+//Funktionens parameter är en array med animal-objekt som följer strukturen 
+//som definieras i interfacet IAnimal.
 export default function renderListOfAnimals(animals) {
     const listOfAnimals = document.querySelector(".list-of-animals ul");
-    for (const animal of animals) {
-        const listItem = document.createElement("li");
-        listItem.textContent = animal.name;
-        listOfAnimals.appendChild(listItem);
-        listItem.addEventListener("click", () => renderAnimalInfo(animal));
+    if (listOfAnimals) {
+        for (const animal of animals) {
+            const listItem = document.createElement("li");
+            listItem.textContent = animal.name;
+            listOfAnimals.appendChild(listItem);
+            listItem.addEventListener("click", () => renderAnimalInfo(animal));
+        }
     }
 }
