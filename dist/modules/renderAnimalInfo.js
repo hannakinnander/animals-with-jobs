@@ -3,8 +3,10 @@
 export default function renderAnimalInfo(animal) {
     const animalInfoDiv = document.querySelector(".animal-info");
     animalInfoDiv.innerHTML = "";
+    const imgDiv = document.createElement("div");
     const img = document.createElement("img");
     img.src = `/images/${animal.imageUrl}`;
+    imgDiv.appendChild(img);
     const animalName = document.createElement("h1");
     animalName.textContent = `${animal.name} the ${animal.kindOfAnimal}`;
     const jobPresentation = document.createElement("h2");
@@ -13,7 +15,7 @@ export default function renderAnimalInfo(animal) {
     const agePresentation = document.createElement("p");
     const animalAge = getAnimalAge(animal);
     agePresentation.textContent = `Age: ${animalAge.toString()} years old.`;
-    animalInfoDiv.append(img, animalName, jobPresentation, agePresentation);
+    animalInfoDiv.append(imgDiv, animalName, jobPresentation, agePresentation);
     if (animal.skills !== undefined) {
         const skills = getListOfSkills(animal);
         skills.classList.add("skills-list");
