@@ -6,13 +6,17 @@
 import { IAnimal } from "./IAnimal.ts";
 import renderAnimalInfo from "./renderAnimalInfo.ts";
 
-export default function renderListOfAnimals(animals: IAnimal[]) :void {
-    const listOfAnimals = document.querySelector(".list-of-animals ul") as HTMLUListElement;
+//Funktionens parameter är en array med animal-objekt som följer strukturen 
+//som definieras i interfacet IAnimal.
+export default function renderListOfAnimals(animals: IAnimal[]): void {
+    const listOfAnimals = document.querySelector(".list-of-animals ul");
     
-    for (const animal of animals){
-        const listItem = document.createElement("li");
-        listItem.textContent = animal.name;
-        listOfAnimals.appendChild(listItem);
-        listItem.addEventListener("click", () => renderAnimalInfo(animal));
+    if (listOfAnimals) {
+        for (const animal of animals) {
+            const listItem = document.createElement("li");
+            listItem.textContent = animal.name;
+            listOfAnimals.appendChild(listItem);
+            listItem.addEventListener("click", () => renderAnimalInfo(animal));
+        }
     }
 }

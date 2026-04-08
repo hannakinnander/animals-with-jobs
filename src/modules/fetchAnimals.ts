@@ -4,16 +4,19 @@
 
 import { IAnimal } from "./IAnimal.ts";
 
+//Funktionen returnerar ett löfte om att i framtiden returnera antingen en array
+//med objekt enligt IAnimal-struktur, eller null om något går fel.
 export default async function fetchAnimals(): Promise<IAnimal[] | null> {
     try {
         const response = await fetch("/data/data.json");
         if (!response.ok) {
-            throw new Error();
+            throw new Error("Couldn't get animals");
         }
         const data: IAnimal[] = await response.json();
         return data;
     }
-    catch (error){
+    catch (error) {
+        console.error(error);
         return null;
     }
 }
