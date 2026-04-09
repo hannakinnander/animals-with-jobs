@@ -79,6 +79,7 @@ p {
     margin-bottom: 1rem;
 }
 
+/*Age och skills skrivs med ::before*/
 ::before {
     color: rgb(156, 154, 154);
     font-size: 16px;
